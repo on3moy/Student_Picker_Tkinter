@@ -36,7 +36,7 @@ Simple Python application built with [Tkinter](https://docs.python.org/3/library
 1. **Clone the repository:**
 
     ```bash
-   git clone https://github.com/yourusername/random-student-picker.git
+   git clone https://github.com/on3moy/Student_Picker_Tkinter.git
    cd random-student-picker
     ```
 
