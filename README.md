@@ -50,13 +50,6 @@ Simple Python application built with [Tkinter](https://docs.python.org/3/library
 
 **Note**: Tkinter usually comes pre-installed with Python. If not, install it via your system’s package manager.
 
-### Dependencies
-python 3.13 comes with Tkinter!  
-
-```bash
-pip install pillow pandas
-```
-
 ---
 
 ## Usage
@@ -81,7 +74,7 @@ Prepare your CSV file.
 
 ```python
 # You can see this only pulls the first column, you can adjust to your liking!
-df = pd.read_csv(file_name, header=None, usecols=[0])
+df = pd.read_csv(file_name, header=None)
 student_names = df.iloc[:, 0].to_list()
 ```
 
