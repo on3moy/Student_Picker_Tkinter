@@ -9,6 +9,14 @@ PICKED = []
 # Student List
 ALL_STUDENTS = []
 BACKGROUND_IMG_PATH = 'img/trex_icon.png'
+# State what folder to use
+FOLDER_NAME = 'Student_Names'
+
+# Create folder if needed
+cwd = os.getcwd()
+folder_path = os.path.join(cwd, FOLDER_NAME)
+if not os.path.exists(folder_path):
+    os.mkdir(folder_path)
 
 # Color Scheme
 bg_color = '#2a2d33'
@@ -45,7 +53,7 @@ pick_student_button = tk.Button(root, text='Pick a Student', font=('Consolas', 1
 pick_student_button.place(relx=.5, rely=.35, anchor='center')
 
 # Add Student Name 
-student_name_label = tk.Label(root, text='🦖', bg=bg_color, fg='white', font=('Consolas', 30, 'bold'))
+student_name_label = tk.Label(root, text='🦖', bg=bg_color, fg='white', font=('Consolas', 24, 'bold'))
 student_name_label.place(relx=.5, rely=.55, anchor='center')
 
 # Add File Name
@@ -103,7 +111,7 @@ def open_file_selector():
     list_box.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
     # Add current files to the list
-    for file in os.listdir():
+    for file in os.listdir(folder_path):
         list_box.insert(tk.END, file)
 
     # Get selected info
@@ -117,11 +125,12 @@ def open_file_selector():
         selected_file = list_box.curselection()
         if selected_file:
             file_name = list_box.get(selected_file[0])
+            file_path = os.path.join(folder_path, list_box.get(selected_file[0]))
             file_name_label.config(text=file_name)
 
             # Try to load csv into list
             try:
-                df = pd.read_csv(file_name, header=None, usecols=[0])
+                df = pd.read_csv(file_path, header=None)
                 student_names = df.iloc[:, 0].to_list()
                 ALL_STUDENTS.extend(student_names)
 
