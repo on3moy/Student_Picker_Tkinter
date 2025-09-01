@@ -54,11 +54,11 @@ Simple Python application built with [Tkinter](https://docs.python.org/3/library
 
 ## Usage
 
-Prepare your CSV file.  
+Prepare your txt file.  
 
-1. Create a CSV file containing your student names. For best results, the CSV should have no header and list the student names in the first column. For example:  
+1. Create a txt file containing your student names. For best results, the txt should have no header and list the student names in the first column. For example:  
 
-    ```csv
+    ```txt
     Alice
     Bob
     Charlie
@@ -74,8 +74,8 @@ Prepare your CSV file.
 
 ```python
 # You can see this only pulls the first column, you can adjust to your liking!
-df = pd.read_csv(file_name, header=None)
-student_names = df.iloc[:, 0].to_list()
+with open(path, 'r', encoding='utf-8') as file:
+    student_names = [line.strip() for line in file if line.strip()]
 ```
 
 ---
